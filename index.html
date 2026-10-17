@@ -59,8 +59,8 @@ label{display:block;font-weight:600;font-size:14px;margin-bottom:6px}
 .selwrap::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:translateY(-70%) rotate(45deg);pointer-events:none}
 select{appearance:none;-webkit-appearance:none;width:100%;padding:14px 40px 14px 16px;font:600 17px var(--body);color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;cursor:pointer}
 select:hover{border-color:var(--b)}
-.info{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
-.info div{background:var(--bg);border-radius:10px;padding:10px 12px}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0}
+.info div{background:var(--bg);border-radius:10px;padding:10px}
 .info small{display:block;color:var(--muted);font-size:12px}
 .info b{font-size:15px}
 .btn{display:block;width:100%;text-align:center;font:600 17px var(--body);padding:15px;border-radius:12px;text-decoration:none;border:0;cursor:pointer;
@@ -165,6 +165,7 @@ h2.sec::after{content:"";display:block;width:56px;height:4px;border-radius:4px;m
       <div class="info" aria-live="polite">
         <div><small>Mod version</small><b id="i-ver">-</b></div>
         <div><small>Type</small><b id="i-type">-</b></div>
+        <div><small>Downloads</small><b id="i-dl">-</b></div>
       </div>
       <a class="btn" id="dl-btn" href="#">Download</a>
       <p class="note" id="note"></p>
@@ -194,7 +195,7 @@ h2.sec::after{content:"";display:block;width:56px;height:4px;border-radius:4px;m
   </section>
   <section class="band" aria-label="Download">
     <div class="bandin">
-      <div><h2>Ready to play?</h2><p>Get N3XR Client for Minecraft 1.21.</p></div>
+      <div><h2>Ready to play?</h2><p>Get N3XR Client for Minecraft 1.21.<br><strong id="band-dl"></strong></p></div>
       <a class="btn" id="band-btn" href="#">Download</a>
     </div>
   </section>
@@ -251,6 +252,31 @@ $("list").innerHTML = VERSIONS.map(v => `
       <a class="btn" href="${v.url}" target="_blank" rel="noopener">Download ${v.version}</a>
     </div>
   </details>`).join("");
+
+/* ===== Download counter =====
+   base = number shown on sfile for this file (update it by hand now and then).
+   The live part counts clicks on the Download buttons of this site. */
+const COUNTER = { base: 4, api: "https://abacus.jasoncameron.dev", ns: "rapz132-n3xr", key: "downloads" };
+let live = 0, counted = false;
+function showDl(){
+  const n = (COUNTER.base + live).toLocaleString("en-US");
+  $("i-dl").textContent = n;
+  $("band-dl").textContent = n + " downloads";
+}
+showDl();
+fetch(`${COUNTER.api}/get/${COUNTER.ns}/${COUNTER.key}`)
+  .then(r => r.ok ? r.json() : {value:0})
+  .then(d => { live = d.value || 0; showDl(); })
+  .catch(showDl);
+function countClick(){
+  if(counted) return; counted = true;
+  fetch(`${COUNTER.api}/hit/${COUNTER.ns}/${COUNTER.key}`)
+    .then(r => r.json()).then(d => { live = d.value; showDl(); })
+    .catch(() => { live++; showDl(); });
+}
+$("dl-btn").addEventListener("click", countClick);
+$("band-btn").addEventListener("click", countClick);
+document.querySelectorAll(".v .btn").forEach(b => b.addEventListener("click", countClick));
 </script>
 </body>
 </html>
