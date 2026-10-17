@@ -95,6 +95,37 @@ h2.sec{font:700 26px var(--display);margin:0 0 8px;letter-spacing:-.02em}
 .v ul{margin:14px 0;padding-left:20px}
 .v .btn{display:inline-block;width:auto;padding:10px 22px;font-size:15px}
 footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:14px}
+
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(620px 420px at 88% 6%,color-mix(in srgb,var(--a) 26%,transparent),transparent 70%),
+  radial-gradient(540px 400px at 4% 58%,color-mix(in srgb,var(--b) 18%,transparent),transparent 70%)}
+.titlerow{display:flex;align-items:center;flex-wrap:wrap;gap:8px 20px;margin-bottom:24px}
+.titlerow h1{margin:0}
+.stage{--s:clamp(72px,16vw,128px);width:calc(var(--s)*1.5);height:calc(var(--s)*1.5);display:grid;place-items:center;perspective:800px}
+.cube{position:relative;width:var(--s);height:var(--s);transform-style:preserve-3d;animation:spin 18s linear infinite}
+.cube b{position:absolute;inset:0;display:grid;place-items:center;font:900 calc(var(--s)*.4) var(--display);color:var(--on-a);
+  border:2px solid rgba(255,255,255,.4);background:linear-gradient(135deg,var(--a),var(--b))}
+.cube b:nth-child(1){transform:translateZ(calc(var(--s)/2))}
+.cube b:nth-child(2){transform:rotateY(90deg) translateZ(calc(var(--s)/2));filter:brightness(.85)}
+.cube b:nth-child(3){transform:rotateY(180deg) translateZ(calc(var(--s)/2));filter:brightness(.7)}
+.cube b:nth-child(4){transform:rotateY(-90deg) translateZ(calc(var(--s)/2));filter:brightness(.85)}
+.cube b:nth-child(5){transform:rotateX(90deg) translateZ(calc(var(--s)/2));filter:brightness(1.15)}
+.cube b:nth-child(6){transform:rotateX(-90deg) translateZ(calc(var(--s)/2));filter:brightness(.6)}
+@keyframes spin{from{transform:rotateX(-24deg) rotateY(0)}to{transform:rotateX(-24deg) rotateY(360deg)}}
+h2.sec::after{content:"";display:block;width:56px;height:4px;border-radius:4px;margin-top:12px;background:linear-gradient(90deg,var(--a),var(--b))}
+.fc{position:relative;overflow:hidden;transition:transform .2s,border-color .2s}
+.fc::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--a),var(--b))}
+.fc:hover{transform:translateY(-4px);border-color:var(--b)}
+.steps li{transition:border-color .2s}.steps li:hover{border-color:var(--a)}
+.v{transition:border-color .2s}.v:hover,.v[open]{border-color:var(--b)}
+.band{padding:24px 0 72px}
+.bandin{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;padding:34px;border-radius:24px;border:1.5px solid var(--line);
+  background:linear-gradient(120deg,color-mix(in srgb,var(--a) 22%,var(--card)),color-mix(in srgb,var(--b) 18%,var(--card)))}
+.bandin h2{font:700 24px var(--display);margin:0 0 6px;letter-spacing:-.02em}
+.bandin p{margin:0;color:var(--muted)}
+.bandin .btn{width:auto;padding:15px 32px}
+@media (max-width:760px){.bandin{padding:26px}.bandin .btn{width:100%}}
+@media (prefers-reduced-motion:reduce){.cube{animation:none;transform:rotateX(-24deg) rotateY(-30deg)}.fc,.steps li,.v{transition:none}}
 @media (max-width:760px){.hero{grid-template-columns:1fr;gap:36px;padding-top:32px}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
 </style>
@@ -118,7 +149,10 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
 <main class="wrap">
   <div class="hero">
     <div>
-      <h1>N3XR</h1>
+      <div class="titlerow">
+        <h1>N3XR</h1>
+        <div class="stage" aria-hidden="true"><div class="cube"><b>N</b><b>3</b><b>X</b><b>R</b><b></b><b></b></div></div>
+      </div>
       <p class="lead">A Fabric client mod with cosmetics, capes, and its own main menu. Pick your game version, then download.</p>
       <ul class="tags" aria-label="Quick info"><li>Fabric</li><li>Client-side</li><li>Free</li></ul>
     </div>
@@ -158,6 +192,12 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
     <p class="sub">Click a version to see what changed.</p>
     <div id="list"></div>
   </section>
+  <section class="band" aria-label="Download">
+    <div class="bandin">
+      <div><h2>Ready to play?</h2><p>Get N3XR Client for Minecraft 1.21.</p></div>
+      <a class="btn" id="band-btn" href="#">Download</a>
+    </div>
+  </section>
 </main>
 
 <footer><div class="wrap">N3XR PROJECT. Not an official Mojang or Microsoft product.</div></footer>
@@ -192,6 +232,7 @@ function pick(){
   $("dl-btn").href = v.url; $("dl-btn").target = "_blank"; $("dl-btn").rel = "noopener";
   $("dl-btn").textContent = "Download " + v.version;
   $("note").textContent = "Requires Fabric Loader.";
+  $("band-btn").href = v.url; $("band-btn").target = "_blank"; $("band-btn").rel = "noopener"; $("band-btn").textContent = "Download " + v.version;
 }
 $("sel-mc").onchange = pick; pick();
 
