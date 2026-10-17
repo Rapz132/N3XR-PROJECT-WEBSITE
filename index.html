@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>N3XR PROJECT – N3XR Client</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#120e2e; --bg2:#1a1545; --card:#211b52; --ink:#f3f0ff; --muted:#b0aadd; --line:#3a3380;
+  --a:#ff4f8b; --b:#5ee0ff; --on-a:#1a0a1f; --grid:rgba(255,255,255,.045);
+  --display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){
+    --bg:#f4f2fd; --bg2:#e9e5fa; --card:#ffffff; --ink:#1a1640; --muted:#5d5985; --line:#d4cef0;
+    --a:#d81b5c; --b:#1d63e8; --on-a:#ffffff; --grid:rgba(26,22,64,.06);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;color:var(--ink);font:400 16px/1.6 var(--body);background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:40px 40px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--b);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 78%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1.5px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:72px}
+.brand{display:flex;align-items:center;gap:12px;font:900 16px var(--display);letter-spacing:.06em;text-decoration:none}
+.logo{width:36px;height:36px;border-radius:9px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:2px;padding:5px;background:var(--card);border:1.5px solid var(--line)}
+.logo i{border-radius:2px;background:var(--line)}
+.logo i:nth-child(1),.logo i:nth-child(3),.logo i:nth-child(5),.logo i:nth-child(7),.logo i:nth-child(9){background:linear-gradient(135deg,var(--a),var(--b))}
+.brand em{font-style:normal;background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+nav{display:flex;align-items:center;gap:4px}
+nav a{text-decoration:none;color:var(--muted);font-weight:500;font-size:15px;padding:8px 14px;border-radius:999px;transition:background .15s,color .15s}
+nav a:hover{color:var(--ink);background:var(--bg2)}
+nav a.cta{margin-left:8px;color:var(--on-a);font-weight:600;background:linear-gradient(100deg,var(--a),var(--b))}
+nav a.cta:hover{color:var(--on-a);filter:brightness(1.08)}
+@media (max-width:640px){nav a:not(.cta){display:none}.brand{font-size:14px}}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:56px 0 72px}
+h1{font:900 clamp(56px,11vw,128px)/.9 var(--display);margin:0 0 24px;letter-spacing:-.04em;
+  background:linear-gradient(100deg,var(--ink) 30%,var(--a) 70%,var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:19px;color:var(--muted);max-width:44ch;margin:0 0 20px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
+.tags li{border:1.5px solid var(--line);border-radius:8px;padding:4px 12px;font-size:14px;font-weight:500;background:var(--bg2)}
+
+.dl{position:relative;background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:26px}
+.dl::before{content:"";position:absolute;inset:-1.5px;border-radius:20px;padding:1.5px;
+  background:linear-gradient(135deg,var(--a),transparent 45%,var(--b));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.dl h2{font:700 15px var(--display);margin:0 0 4px}
+.dl .sm{color:var(--muted);font-size:14px;margin:0 0 20px}
+label{display:block;font-weight:600;font-size:14px;margin-bottom:6px}
+.selwrap{position:relative}
+.selwrap::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+select{appearance:none;-webkit-appearance:none;width:100%;padding:14px 40px 14px 16px;font:600 17px var(--body);color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;cursor:pointer}
+select:hover{border-color:var(--b)}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
+.info div{background:var(--bg);border-radius:10px;padding:10px 12px}
+.info small{display:block;color:var(--muted);font-size:12px}
+.info b{font-size:15px}
+.btn{display:block;width:100%;text-align:center;font:600 17px var(--body);padding:15px;border-radius:12px;text-decoration:none;border:0;cursor:pointer;
+  color:var(--on-a);background:linear-gradient(100deg,var(--a),var(--b));transition:transform .15s,filter .15s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.btn[aria-disabled="true"]{opacity:.4;pointer-events:none}
+.note{color:var(--muted);font-size:13px;text-align:center;margin:12px 0 0}
+
+section{padding:56px 0}
+h2.sec{font:700 26px var(--display);margin:0 0 8px;letter-spacing:-.02em}
+.sub{color:var(--muted);margin:0 0 28px;max-width:60ch}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.fc{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:22px}
+.fc .ic{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;font-size:22px;margin-bottom:14px;background:linear-gradient(135deg,var(--a),var(--b))}
+.fc h3{margin:0 0 6px;font-size:18px}
+.fc p{margin:0;color:var(--muted)}
+
+.steps{counter-reset:s;display:grid;gap:14px;padding:0;margin:0;list-style:none}
+.steps li{counter-increment:s;display:flex;gap:16px;align-items:flex-start;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:16px 18px}
+.steps li::before{content:counter(s);flex:none;width:32px;height:32px;border-radius:8px;background:var(--a);color:var(--on-a);font:700 15px var(--display);display:grid;place-items:center}
+.steps b{display:block}
+.steps span{color:var(--muted)}
+
+.v{background:var(--card);border:1.5px solid var(--line);border-radius:14px;margin-bottom:12px}
+.v summary{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:16px 18px;cursor:pointer;list-style:none}
+.v summary::-webkit-details-marker{display:none}
+.v .name{font-weight:600;flex:1 1 200px}
+.v .meta{color:var(--muted);font-size:14px}
+.badge{font-size:12px;font-weight:600;padding:3px 10px;border-radius:6px}
+.release{background:#16c47f;color:#04271a}.beta{background:#ffc247;color:#3d2600}.alpha{background:#ff7a9a;color:#3d0618}
+.v .body{padding:4px 18px 18px;border-top:1px solid var(--line)}
+.v ul{margin:14px 0;padding-left:20px}
+.v .btn{display:inline-block;width:auto;padding:10px 22px;font-size:15px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:14px}
+@media (max-width:760px){.hero{grid-template-columns:1fr;gap:36px;padding-top:32px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="N3XR PROJECT">
+      <span class="logo" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      <span>N3XR <em>PROJECT</em></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#fitur">Features</a>
+      <a href="#pasang">How to install</a>
+      <a href="#versi">Versions</a>
+      <a class="cta" href="#unduh">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <h1>N3XR</h1>
+      <p class="lead">A Fabric client mod with cosmetics, capes, and its own main menu. Pick your game version, then download.</p>
+      <ul class="tags" aria-label="Quick info"><li>Fabric</li><li>Client-side</li><li>Free</li></ul>
+    </div>
+
+    <div class="dl" id="unduh" role="group" aria-labelledby="dl-title">
+      <h2 id="dl-title">Download N3XR Client</h2>
+      <p class="sm">Choose your Minecraft version.</p>
+      <label for="sel-mc">Version</label>
+      <div class="selwrap"><select id="sel-mc"></select></div>
+      <div class="info" aria-live="polite">
+        <div><small>Mod version</small><b id="i-ver">-</b></div>
+        <div><small>Type</small><b id="i-type">-</b></div>
+      </div>
+      <a class="btn" id="dl-btn" href="#">Download</a>
+      <p class="note" id="note"></p>
+    </div>
+  </div>
+
+  <section id="fitur">
+    <h2 class="sec">Features</h2>
+    <p class="sub">What you get with N3XR Client.</p>
+    <div class="feat" id="features"></div>
+  </section>
+
+  <section id="pasang">
+    <h2 class="sec">How to install</h2>
+    <p class="sub">Three steps, in order.</p>
+    <ol class="steps">
+      <li><div><b>Install Fabric Loader</b><span>For Minecraft 1.21, through your launcher.</span></div></li>
+      <li><div><b>Put the jar in your mods folder</b><span>Move the downloaded file into the <code>mods</code> folder.</span></div></li>
+      <li><div><b>Launch the game</b><span>Select the Fabric 1.21 profile and play.</span></div></li>
+    </ol>
+  </section>
+
+  <section id="versi">
+    <h2 class="sec">All versions</h2>
+    <p class="sub">Click a version to see what changed.</p>
+    <div id="list"></div>
+  </section>
+</main>
+
+<footer><div class="wrap">N3XR PROJECT. Not an official Mojang or Microsoft product.</div></footer>
+
+<script>
+/* ============ EDIT THIS SECTION ============ */
+
+const FEATURES = [
+  {i:"🧣", t:"Custom cape", d:"An N3XR cape that moves like the vanilla cape, including while sneaking."},
+  {i:"🖥️", t:"New main menu", d:"Player preview on the right, a cosmetics button, and an account panel in the corner."},
+  {i:"🏷️", t:"N3XR nametag", d:"The N3XR Client icon next to your username in third person."}
+];
+
+/* Add new versions at the top. type: "release" | "beta" | "alpha" */
+const VERSIONS = [
+  { version:"1.2", type:"release", mc:"1.21", date:"",
+    url:"https://sfile.co/SjleaJq7cVg",
+    changelog:["N3XR Client 1.2 for Minecraft 1.21."] }
+];
+/* ========================================= */
+
+const $ = id => document.getElementById(id);
+const typeLabel = {release:"Release", beta:"Beta", alpha:"Alpha"};
+
+const mcList = [...new Set(VERSIONS.map(v => v.mc))];
+$("sel-mc").innerHTML = mcList.map(m => `<option value="${m}">Minecraft ${m}</option>`).join("");
+
+function pick(){
+  const v = VERSIONS.find(x => x.mc === $("sel-mc").value);
+  $("i-ver").textContent = v.version;
+  $("i-type").textContent = typeLabel[v.type];
+  $("dl-btn").href = v.url; $("dl-btn").target = "_blank"; $("dl-btn").rel = "noopener";
+  $("dl-btn").textContent = "Download " + v.version;
+  $("note").textContent = "Requires Fabric Loader.";
+}
+$("sel-mc").onchange = pick; pick();
+
+$("features").innerHTML = FEATURES.map(f =>
+  `<div class="fc"><div class="ic" aria-hidden="true">${f.i}</div><h3>${f.t}</h3><p>${f.d}</p></div>`).join("");
+
+$("list").innerHTML = VERSIONS.map(v => `
+  <details class="v">
+    <summary>
+      <span class="name">N3XR Client ${v.version}</span>
+      <span class="badge ${v.type}">${typeLabel[v.type]}</span>
+      <span class="meta">Minecraft ${v.mc}${v.date ? " · " + v.date : ""}</span>
+    </summary>
+    <div class="body">
+      <ul>${v.changelog.map(c => `<li>${c}</li>`).join("")}</ul>
+      <a class="btn" href="${v.url}" target="_blank" rel="noopener">Download ${v.version}</a>
+    </div>
+  </details>`).join("");
+</script>
+</body>
+</html>
