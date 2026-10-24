@@ -9,31 +9,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#120e2e; --bg2:#1a1545; --card:#211b52; --ink:#f3f0ff; --muted:#b0aadd; --line:#3a3380;
-  --a:#ff4f8b; --b:#5ee0ff; --on-a:#1a0a1f; --grid:rgba(255,255,255,.045);
+  --bg:#0a0a0a; --bg2:#151515; --card:#141414; --ink:#ffffff; --muted:#a9a9a9; --line:#2d2d2d;
+  --a:#e50914; --b:#8c0009; --on-a:#ffffff; --grid:rgba(255,255,255,.05);
   --display:"Unbounded","Arial Black",system-ui,sans-serif;
   --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-}
-@media (prefers-color-scheme:light){
-  :root:not([data-theme="dark"]){
-    --bg:#f4f2fd; --bg2:#e9e5fa; --card:#ffffff; --ink:#1a1640; --muted:#5d5985; --line:#d4cef0;
-    --a:#d81b5c; --b:#1d63e8; --on-a:#ffffff; --grid:rgba(26,22,64,.06);
-  }
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
 body{margin:0;color:var(--ink);font:400 16px/1.6 var(--body);background:var(--bg);
-  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
-  background-size:40px 40px}
+  background-image:repeating-linear-gradient(135deg,transparent 0 26px,rgba(229,9,20,.08) 26px 28px)}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--b);outline-offset:3px}
 .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
 header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 78%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1.5px solid var(--line)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:72px}
 .brand{display:flex;align-items:center;gap:12px;font:900 16px var(--display);letter-spacing:.06em;text-decoration:none}
-.logo{width:36px;height:36px;border-radius:9px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:2px;padding:5px;background:var(--card);border:1.5px solid var(--line)}
-.logo i{border-radius:2px;background:var(--line)}
-.logo i:nth-child(1),.logo i:nth-child(3),.logo i:nth-child(5),.logo i:nth-child(7),.logo i:nth-child(9){background:linear-gradient(135deg,var(--a),var(--b))}
+.logo{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--a),var(--b));font:900 19px var(--display);color:#fff;box-shadow:0 0 18px color-mix(in srgb,var(--a) 50%,transparent)}
 .brand em{font-style:normal;background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
 nav{display:flex;align-items:center;gap:4px}
 nav a{text-decoration:none;color:var(--muted);font-weight:500;font-size:15px;padding:8px 14px;border-radius:999px;transition:background .15s,color .15s}
@@ -90,7 +81,7 @@ h2.sec{font:700 26px var(--display);margin:0 0 8px;letter-spacing:-.02em}
 .v .name{font-weight:600;flex:1 1 200px}
 .v .meta{color:var(--muted);font-size:14px}
 .badge{font-size:12px;font-weight:600;padding:3px 10px;border-radius:6px}
-.release{background:#16c47f;color:#04271a}.beta{background:#ffc247;color:#3d2600}.alpha{background:#ff7a9a;color:#3d0618}
+.release{background:#fff;color:#0a0a0a}.beta{background:#3a3a3a;color:#fff}.alpha{background:var(--a);color:#fff}
 .v .body{padding:4px 18px 18px;border-top:1px solid var(--line)}
 .v ul{margin:14px 0;padding-left:20px}
 .v .btn{display:inline-block;width:auto;padding:10px 22px;font-size:15px}
@@ -126,15 +117,29 @@ h2.sec::after{content:"";display:block;width:56px;height:4px;border-radius:4px;m
 .bandin .btn{width:auto;padding:15px 32px}
 @media (max-width:760px){.bandin{padding:26px}.bandin .btn{width:100%}}
 @media (prefers-reduced-motion:reduce){.cube{animation:none;transform:rotateX(-24deg) rotateY(-30deg)}.fc,.steps li,.v{transition:none}}
+
+.ticker{background:var(--a);color:#fff;overflow:hidden;white-space:nowrap;border-bottom:2px solid #000}
+.track{display:flex;width:max-content;animation:slide 40s linear infinite}
+.track span{font:900 13px/34px var(--display);letter-spacing:.35em;padding:0 18px}
+.track span::after{content:"/";margin-left:36px;color:#000}
+@keyframes slide{to{transform:translateX(-50%)}}
+.dl{box-shadow:0 0 70px color-mix(in srgb,var(--a) 28%,transparent)}
+h1{text-shadow:none;filter:drop-shadow(0 0 28px color-mix(in srgb,var(--a) 45%,transparent))}
+@media (prefers-reduced-motion:reduce){.track{animation:none}}
+
+.mc{width:100%;height:100%;overflow:visible;transform:rotate(-8deg);filter:drop-shadow(0 0 16px color-mix(in srgb,var(--a) 55%,transparent));animation:bob 3.2s ease-in-out infinite}
+@keyframes bob{50%{transform:rotate(-8deg) translateY(-8px)}}
+@media (prefers-reduced-motion:reduce){.mc{animation:none}}
 @media (max-width:760px){.hero{grid-template-columns:1fr;gap:36px;padding-top:32px}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
 </style>
 </head>
 <body>
+<div class="ticker" aria-hidden="true"><div class="track" id="track"></div></div>
 <header>
   <div class="wrap">
     <a class="brand" href="#" aria-label="N3XR PROJECT">
-      <span class="logo" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      <span class="logo" aria-hidden="true">N</span>
       <span>N3XR <em>PROJECT</em></span>
     </a>
     <nav aria-label="Main navigation">
@@ -151,7 +156,7 @@ h2.sec::after{content:"";display:block;width:56px;height:4px;border-radius:4px;m
     <div>
       <div class="titlerow">
         <h1>N3XR</h1>
-        <div class="stage" aria-hidden="true"><div class="cube"><b>N</b><b>3</b><b>X</b><b>R</b><b></b><b></b></div></div>
+        <div class="stage" aria-hidden="true"><svg class="mc" id="mc" viewBox="0 0 16 16" shape-rendering="crispEdges"></svg></div>
       </div>
       <p class="lead">A Fabric client mod with cosmetics, capes, and its own main menu. Pick your game version, then download.</p>
       <ul class="tags" aria-label="Quick info"><li>Fabric</li><li>Client-side</li><li>Free</li></ul>
@@ -207,7 +212,7 @@ h2.sec::after{content:"";display:block;width:56px;height:4px;border-radius:4px;m
 /* ============ EDIT THIS SECTION ============ */
 
 const FEATURES = [
-  {i:"🧣", t:"Custom cape", d:"An N3XR cape that moves like the vanilla cape, including while sneaking."},
+  {i:"🧣", t:"Custom cape", d:"Draw your own cape design and wear it in-game."},
   {i:"🖥️", t:"New main menu", d:"Player preview on the right, a cosmetics button, and an account panel in the corner."},
   {i:"🏷️", t:"N3XR nametag", d:"The N3XR Client icon next to your username in third person."}
 ];
@@ -277,6 +282,25 @@ function countClick(){
 $("dl-btn").addEventListener("click", countClick);
 $("band-btn").addEventListener("click", countClick);
 document.querySelectorAll(".v .btn").forEach(b => b.addEventListener("click", countClick));
+
+document.getElementById("track").innerHTML = Array(60).fill("<span>N3XR</span>").join("");
+
+/* pixel-art pickaxe (gambar sendiri, bukan aset Minecraft) */
+(function(){
+  const N=16, px={}, col={W:"#ffffff",G:"#bdbdbd",R:"#e50914",D:"#8c0009"};
+  for(let i=0;i<10;i++) px[(2+i)+","+(13-i)] = i%2 ? "W" : "G";
+  for(let y=0;y<N;y++) for(let x=0;x<N;x++){
+    const dx=x-3, dy=12-y, d=Math.hypot(dx,dy), a=Math.atan2(dy,dx)*180/Math.PI;
+    if(d>=8.2 && d<=10.4 && a>=8 && a<=82) px[x+","+y] = d>9.4 ? "D" : "R";
+  }
+  const out={};
+  Object.keys(px).forEach(k=>{const [x,y]=k.split(",").map(Number);
+    for(let i=-1;i<=1;i++)for(let j=-1;j<=1;j++){const kk=(x+i)+","+(y+j); if(!px[kk]) out[kk]=1;}});
+  let g="";
+  Object.keys(out).forEach(k=>{const [x,y]=k.split(",");g+=`<rect x="${x}" y="${y}" width="1" height="1" fill="#000"/>`;});
+  Object.keys(px).forEach(k=>{const [x,y]=k.split(",");g+=`<rect x="${x}" y="${y}" width="1" height="1" fill="${col[px[k]]}"/>`;});
+  document.getElementById("mc").innerHTML=g;
+})();
 </script>
 </body>
 </html>
