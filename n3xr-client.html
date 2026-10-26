@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>N3XR PROJECT – N3XR Client</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="ticker" aria-hidden="true"><div class="track" id="track"></div></div>
+<header>
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="N3XR PROJECT">
+      <span class="logo" aria-hidden="true">N</span>
+      <span>N3XR <em>PROJECT</em></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="index.html">&larr; All mods</a>
+      <a href="#fitur">Features</a>
+      <a href="#pasang">How to install</a>
+      <a href="#versi">Versions</a>
+      <a href="#community">Community</a>
+      <a class="cta" href="#unduh">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <div class="titlerow">
+        <h1>N3XR</h1>
+        <div class="stage" aria-hidden="true"><svg class="mc" id="mc" viewBox="0 0 16 16" shape-rendering="crispEdges"></svg></div>
+      </div>
+      <p class="lead">A Fabric client mod with cosmetics, capes, and its own main menu. Pick your game version, then download.</p>
+      <ul class="tags" aria-label="Quick info"><li>Fabric</li><li>Client-side</li><li>Free</li></ul>
+    </div>
+
+    <div class="dl" id="unduh" role="group" aria-labelledby="dl-title">
+      <h2 id="dl-title">Download N3XR Client</h2>
+      <p class="sm">Choose your Minecraft version.</p>
+      <label for="sel-mc">Version</label>
+      <div class="selwrap"><select id="sel-mc"></select></div>
+      <div class="info" aria-live="polite">
+        <div><small>Mod version</small><b id="i-ver">-</b></div>
+        <div><small>Type</small><b id="i-type">-</b></div>
+        <div><small>Downloads</small><b id="i-dl">-</b></div>
+      </div>
+      <a class="btn" id="dl-btn" href="#">Download</a>
+      <p class="note" id="note"></p>
+    </div>
+  </div>
+
+  <section id="fitur">
+    <h2 class="sec">Features</h2>
+    <p class="sub">What you get with N3XR Client.</p>
+    <div class="feat" id="features"></div>
+  </section>
+
+  <section id="pasang">
+    <h2 class="sec">How to install</h2>
+    <p class="sub">Three steps, in order.</p>
+    <ol class="steps">
+      <li><div><b>Install Fabric Loader</b><span>For Minecraft 1.21, through your launcher.</span></div></li>
+      <li><div><b>Put the jar in your mods folder</b><span>Move the downloaded file into the <code>mods</code> folder.</span></div></li>
+      <li><div><b>Launch the game</b><span>Select the Fabric 1.21 profile and play.</span></div></li>
+    </ol>
+  </section>
+
+  <section id="versi">
+    <h2 class="sec">All versions</h2>
+    <p class="sub">Click a version to see what changed.</p>
+    <div id="list"></div>
+  </section>
+  <section id="community">
+    <h2 class="sec">Join the community</h2>
+    <p class="sub">Get updates, ask for help, and hang out with other N3XR players.</p>
+    <div class="soc-grid">
+      <a class="soc" href="https://whatsapp.com/channel/0029Vb8USLE23n3eD6PtXp3N" target="_blank" rel="noopener noreferrer">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8.5c0 3.5 2.5 6 6 6l1-1.6-2-1-1 .8c-.8-.4-1.6-1.2-2-2l.8-1-1-2z" fill="currentColor"/></svg></div>
+        <h3>WhatsApp Channel</h3>
+        <p>Release news and announcements, straight to your phone.</p>
+        <span class="go">Follow channel <span aria-hidden="true">→</span></span>
+      </a>
+      <a class="soc" href="https://discord.gg/S5zvBxM9e" target="_blank" rel="noopener noreferrer">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 7h10a4 4 0 0 1 4 4.5l-.8 4.8a2.2 2.2 0 0 1-3.8.9L15 15H9l-1.4 2.2a2.2 2.2 0 0 1-3.8-.9L3 11.5A4 4 0 0 1 7 7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="9" cy="11.5" r="1.4" fill="currentColor"/><circle cx="15" cy="11.5" r="1.4" fill="currentColor"/></svg></div>
+        <h3>Discord Server</h3>
+        <p>Chat with the community, get help, and share your feedback.</p>
+        <span class="go">Join server <span aria-hidden="true">→</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="band" aria-label="Download">
+    <div class="bandin">
+      <div><h2>Ready to play?</h2><p>Get N3XR Client for Minecraft 1.21.<br><strong id="band-dl"></strong></p></div>
+      <a class="btn" id="band-btn" href="#">Download</a>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">N3XR PROJECT. Not an official Mojang or Microsoft product.</div></footer>
+
+<script>
+/* ============ EDIT THIS SECTION ============ */
+
+const FEATURES = [
+  {i:"🧣", t:"Custom cape", d:"Draw your own cape design and wear it in-game."},
+  {i:"🖥️", t:"New main menu", d:"Player preview on the right, a cosmetics button, and an account panel in the corner."},
+  {i:"🏷️", t:"N3XR nametag", d:"The N3XR Client icon next to your username in third person."}
+];
+
+/* Add new versions at the top. type: "release" | "beta" | "alpha" */
+const VERSIONS = [
+  { version:"1.2", type:"release", mc:"1.21", date:"",
+    url:"https://sfile.co/SjleaJq7cVg",
+    changelog:["N3XR Client 1.2 for Minecraft 1.21."] }
+];
+/* ========================================= */
+
+const $ = id => document.getElementById(id);
+const typeLabel = {release:"Release", beta:"Beta", alpha:"Alpha"};
+
+const mcList = [...new Set(VERSIONS.map(v => v.mc))];
+$("sel-mc").innerHTML = mcList.map(m => `<option value="${m}">Minecraft ${m}</option>`).join("");
+
+function pick(){
+  const v = VERSIONS.find(x => x.mc === $("sel-mc").value);
+  $("i-ver").textContent = v.version;
+  $("i-type").textContent = typeLabel[v.type];
+  $("dl-btn").href = v.url; $("dl-btn").target = "_blank"; $("dl-btn").rel = "noopener";
+  $("dl-btn").textContent = "Download " + v.version;
+  $("note").textContent = "Requires Fabric Loader.";
+  $("band-btn").href = v.url; $("band-btn").target = "_blank"; $("band-btn").rel = "noopener"; $("band-btn").textContent = "Download " + v.version;
+}
+$("sel-mc").onchange = pick; pick();
+
+$("features").innerHTML = FEATURES.map(f =>
+  `<div class="fc"><div class="ic" aria-hidden="true">${f.i}</div><h3>${f.t}</h3><p>${f.d}</p></div>`).join("");
+
+$("list").innerHTML = VERSIONS.map(v => `
+  <details class="v">
+    <summary>
+      <span class="name">N3XR Client ${v.version}</span>
+      <span class="badge ${v.type}">${typeLabel[v.type]}</span>
+      <span class="meta">Minecraft ${v.mc}${v.date ? " · " + v.date : ""}</span>
+    </summary>
+    <div class="body">
+      <ul>${v.changelog.map(c => `<li>${c}</li>`).join("")}</ul>
+      <a class="btn" href="${v.url}" target="_blank" rel="noopener">Download ${v.version}</a>
+    </div>
+  </details>`).join("");
+
+/* ===== Download counter =====
+   base = number shown on sfile for this file (update it by hand now and then).
+   The live part counts clicks on the Download buttons of this site. */
+const COUNTER = { base: 4, api: "https://abacus.jasoncameron.dev", ns: "rapz132-n3xr", key: "downloads" };
+let live = 0, counted = false;
+function showDl(){
+  const n = (COUNTER.base + live).toLocaleString("en-US");
+  $("i-dl").textContent = n;
+  $("band-dl").textContent = n + " downloads";
+}
+showDl();
+fetch(`${COUNTER.api}/get/${COUNTER.ns}/${COUNTER.key}`)
+  .then(r => r.ok ? r.json() : {value:0})
+  .then(d => { live = d.value || 0; showDl(); })
+  .catch(showDl);
+function countClick(){
+  if(counted) return; counted = true;
+  fetch(`${COUNTER.api}/hit/${COUNTER.ns}/${COUNTER.key}`)
+    .then(r => r.json()).then(d => { live = d.value; showDl(); })
+    .catch(() => { live++; showDl(); });
+}
+$("dl-btn").addEventListener("click", countClick);
+$("band-btn").addEventListener("click", countClick);
+document.querySelectorAll(".v .btn").forEach(b => b.addEventListener("click", countClick));
+
+document.getElementById("track").innerHTML = Array(60).fill("<span>N3XR</span>").join("");
+
+/* pixel-art pickaxe (gambar sendiri, bukan aset Minecraft) */
+(function(){
+  const N=16, px={}, col={W:"#ffffff",G:"#bdbdbd",R:"#e50914",D:"#8c0009"};
+  for(let i=0;i<10;i++) px[(2+i)+","+(13-i)] = i%2 ? "W" : "G";
+  for(let y=0;y<N;y++) for(let x=0;x<N;x++){
+    const dx=x-3, dy=12-y, d=Math.hypot(dx,dy), a=Math.atan2(dy,dx)*180/Math.PI;
+    if(d>=8.2 && d<=10.4 && a>=8 && a<=82) px[x+","+y] = d>9.4 ? "D" : "R";
+  }
+  const out={};
+  Object.keys(px).forEach(k=>{const [x,y]=k.split(",").map(Number);
+    for(let i=-1;i<=1;i++)for(let j=-1;j<=1;j++){const kk=(x+i)+","+(y+j); if(!px[kk]) out[kk]=1;}});
+  let g="";
+  Object.keys(out).forEach(k=>{const [x,y]=k.split(",");g+=`<rect x="${x}" y="${y}" width="1" height="1" fill="#000"/>`;});
+  Object.keys(px).forEach(k=>{const [x,y]=k.split(",");g+=`<rect x="${x}" y="${y}" width="1" height="1" fill="${col[px[k]]}"/>`;});
+  document.getElementById("mc").innerHTML=g;
+})();
+</script>
+</body>
+</html>
