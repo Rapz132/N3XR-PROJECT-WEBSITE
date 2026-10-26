@@ -130,6 +130,19 @@ h1{text-shadow:none;filter:drop-shadow(0 0 28px color-mix(in srgb,var(--a) 45%,t
 .mc{width:100%;height:100%;overflow:visible;transform:rotate(-8deg);filter:drop-shadow(0 0 16px color-mix(in srgb,var(--a) 55%,transparent));animation:bob 3.2s ease-in-out infinite}
 @keyframes bob{50%{transform:rotate(-8deg) translateY(-8px)}}
 @media (prefers-reduced-motion:reduce){.mc{animation:none}}
+
+.soc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.soc{position:relative;display:flex;flex-direction:column;gap:14px;padding:26px;border-radius:20px;text-decoration:none;background:var(--card);border:1.5px solid var(--line);overflow:hidden;transition:transform .2s,border-color .2s,box-shadow .2s}
+.soc::after{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--a) 35%,transparent),transparent 70%);pointer-events:none}
+.soc:hover{transform:translateY(-5px);border-color:var(--a);box-shadow:0 14px 40px color-mix(in srgb,var(--a) 25%,transparent)}
+.soc .ico{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--a),var(--b));color:#fff}
+.soc .ico svg{width:30px;height:30px}
+.soc h3{margin:0;font:700 19px var(--display);letter-spacing:-.01em}
+.soc p{margin:0;color:var(--muted);flex:1}
+.soc .go{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:#fff}
+.soc .go span{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#fff;color:#000;transition:transform .2s}
+.soc:hover .go span{transform:translateX(5px)}
+@media (prefers-reduced-motion:reduce){.soc,.soc .go span{transition:none}}
 @media (max-width:760px){.hero{grid-template-columns:1fr;gap:36px;padding-top:32px}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
 </style>
@@ -146,6 +159,7 @@ h1{text-shadow:none;filter:drop-shadow(0 0 28px color-mix(in srgb,var(--a) 45%,t
       <a href="#fitur">Features</a>
       <a href="#pasang">How to install</a>
       <a href="#versi">Versions</a>
+      <a href="#community">Community</a>
       <a class="cta" href="#unduh">Download</a>
     </nav>
   </div>
@@ -198,6 +212,25 @@ h1{text-shadow:none;filter:drop-shadow(0 0 28px color-mix(in srgb,var(--a) 45%,t
     <p class="sub">Click a version to see what changed.</p>
     <div id="list"></div>
   </section>
+  <section id="community">
+    <h2 class="sec">Join the community</h2>
+    <p class="sub">Get updates, ask for help, and hang out with other N3XR players.</p>
+    <div class="soc-grid">
+      <a class="soc" href="https://whatsapp.com/channel/0029Vb8USLE23n3eD6PtXp3N" target="_blank" rel="noopener noreferrer">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8.5c0 3.5 2.5 6 6 6l1-1.6-2-1-1 .8c-.8-.4-1.6-1.2-2-2l.8-1-1-2z" fill="currentColor"/></svg></div>
+        <h3>WhatsApp Channel</h3>
+        <p>Release news and announcements, straight to your phone.</p>
+        <span class="go">Follow channel <span aria-hidden="true">→</span></span>
+      </a>
+      <a class="soc" href="https://discord.gg/S5zvBxM9e" target="_blank" rel="noopener noreferrer">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 7h10a4 4 0 0 1 4 4.5l-.8 4.8a2.2 2.2 0 0 1-3.8.9L15 15H9l-1.4 2.2a2.2 2.2 0 0 1-3.8-.9L3 11.5A4 4 0 0 1 7 7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="9" cy="11.5" r="1.4" fill="currentColor"/><circle cx="15" cy="11.5" r="1.4" fill="currentColor"/></svg></div>
+        <h3>Discord Server</h3>
+        <p>Chat with the community, get help, and share your feedback.</p>
+        <span class="go">Join server <span aria-hidden="true">→</span></span>
+      </a>
+    </div>
+  </section>
+
   <section class="band" aria-label="Download">
     <div class="bandin">
       <div><h2>Ready to play?</h2><p>Get N3XR Client for Minecraft 1.21.<br><strong id="band-dl"></strong></p></div>
