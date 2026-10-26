@@ -3,215 +3,60 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>N3XR PROJECT – N3XR Client</title>
+<title>N3XR PROJECT – Minecraft mods</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#0a0a0a; --bg2:#151515; --card:#141414; --ink:#ffffff; --muted:#a9a9a9; --line:#2d2d2d;
-  --a:#e50914; --b:#8c0009; --on-a:#ffffff; --grid:rgba(255,255,255,.05);
-  --display:"Unbounded","Arial Black",system-ui,sans-serif;
-  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:84px}
-body{margin:0;color:var(--ink);font:400 16px/1.6 var(--body);background:var(--bg);
-  background-image:repeating-linear-gradient(135deg,transparent 0 26px,rgba(229,9,20,.08) 26px 28px)}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--b);outline-offset:3px}
-.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
-header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 78%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1.5px solid var(--line)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:72px}
-.brand{display:flex;align-items:center;gap:12px;font:900 16px var(--display);letter-spacing:.06em;text-decoration:none}
-.logo{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--a),var(--b));font:900 19px var(--display);color:#fff;box-shadow:0 0 18px color-mix(in srgb,var(--a) 50%,transparent)}
-.brand em{font-style:normal;background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
-nav{display:flex;align-items:center;gap:4px}
-nav a{text-decoration:none;color:var(--muted);font-weight:500;font-size:15px;padding:8px 14px;border-radius:999px;transition:background .15s,color .15s}
-nav a:hover{color:var(--ink);background:var(--bg2)}
-nav a.cta{margin-left:8px;color:var(--on-a);font-weight:600;background:linear-gradient(100deg,var(--a),var(--b))}
-nav a.cta:hover{color:var(--on-a);filter:brightness(1.08)}
-@media (max-width:640px){nav a:not(.cta){display:none}.brand{font-size:14px}}
-.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:56px 0 72px}
-h1{font:900 clamp(56px,11vw,128px)/.9 var(--display);margin:0 0 24px;letter-spacing:-.04em;
-  background:linear-gradient(100deg,var(--ink) 30%,var(--a) 70%,var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{font-size:19px;color:var(--muted);max-width:44ch;margin:0 0 20px}
-.tags{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
-.tags li{border:1.5px solid var(--line);border-radius:8px;padding:4px 12px;font-size:14px;font-weight:500;background:var(--bg2)}
-
-.dl{position:relative;background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:26px}
-.dl::before{content:"";position:absolute;inset:-1.5px;border-radius:20px;padding:1.5px;
-  background:linear-gradient(135deg,var(--a),transparent 45%,var(--b));
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
-.dl h2{font:700 15px var(--display);margin:0 0 4px}
-.dl .sm{color:var(--muted);font-size:14px;margin:0 0 20px}
-label{display:block;font-weight:600;font-size:14px;margin-bottom:6px}
-.selwrap{position:relative}
-.selwrap::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:translateY(-70%) rotate(45deg);pointer-events:none}
-select{appearance:none;-webkit-appearance:none;width:100%;padding:14px 40px 14px 16px;font:600 17px var(--body);color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;cursor:pointer}
-select:hover{border-color:var(--b)}
-.info{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0}
-.info div{background:var(--bg);border-radius:10px;padding:10px}
-.info small{display:block;color:var(--muted);font-size:12px}
-.info b{font-size:15px}
-.btn{display:block;width:100%;text-align:center;font:600 17px var(--body);padding:15px;border-radius:12px;text-decoration:none;border:0;cursor:pointer;
-  color:var(--on-a);background:linear-gradient(100deg,var(--a),var(--b));transition:transform .15s,filter .15s}
-.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
-.btn[aria-disabled="true"]{opacity:.4;pointer-events:none}
-.note{color:var(--muted);font-size:13px;text-align:center;margin:12px 0 0}
-
-section{padding:56px 0}
-h2.sec{font:700 26px var(--display);margin:0 0 8px;letter-spacing:-.02em}
-.sub{color:var(--muted);margin:0 0 28px;max-width:60ch}
-.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
-.fc{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:22px}
-.fc .ic{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;font-size:22px;margin-bottom:14px;background:linear-gradient(135deg,var(--a),var(--b))}
-.fc h3{margin:0 0 6px;font-size:18px}
-.fc p{margin:0;color:var(--muted)}
-
-.steps{counter-reset:s;display:grid;gap:14px;padding:0;margin:0;list-style:none}
-.steps li{counter-increment:s;display:flex;gap:16px;align-items:flex-start;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:16px 18px}
-.steps li::before{content:counter(s);flex:none;width:32px;height:32px;border-radius:8px;background:var(--a);color:var(--on-a);font:700 15px var(--display);display:grid;place-items:center}
-.steps b{display:block}
-.steps span{color:var(--muted)}
-
-.v{background:var(--card);border:1.5px solid var(--line);border-radius:14px;margin-bottom:12px}
-.v summary{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:16px 18px;cursor:pointer;list-style:none}
-.v summary::-webkit-details-marker{display:none}
-.v .name{font-weight:600;flex:1 1 200px}
-.v .meta{color:var(--muted);font-size:14px}
-.badge{font-size:12px;font-weight:600;padding:3px 10px;border-radius:6px}
-.release{background:#fff;color:#0a0a0a}.beta{background:#3a3a3a;color:#fff}.alpha{background:var(--a);color:#fff}
-.v .body{padding:4px 18px 18px;border-top:1px solid var(--line)}
-.v ul{margin:14px 0;padding-left:20px}
-.v .btn{display:inline-block;width:auto;padding:10px 22px;font-size:15px}
-footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:14px}
-
-body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background:radial-gradient(620px 420px at 88% 6%,color-mix(in srgb,var(--a) 26%,transparent),transparent 70%),
-  radial-gradient(540px 400px at 4% 58%,color-mix(in srgb,var(--b) 18%,transparent),transparent 70%)}
-.titlerow{display:flex;align-items:center;flex-wrap:wrap;gap:8px 20px;margin-bottom:24px}
-.titlerow h1{margin:0}
-.stage{--s:clamp(72px,16vw,128px);width:calc(var(--s)*1.5);height:calc(var(--s)*1.5);display:grid;place-items:center;perspective:800px}
-.cube{position:relative;width:var(--s);height:var(--s);transform-style:preserve-3d;animation:spin 18s linear infinite}
-.cube b{position:absolute;inset:0;display:grid;place-items:center;font:900 calc(var(--s)*.4) var(--display);color:var(--on-a);
-  border:2px solid rgba(255,255,255,.4);background:linear-gradient(135deg,var(--a),var(--b))}
-.cube b:nth-child(1){transform:translateZ(calc(var(--s)/2))}
-.cube b:nth-child(2){transform:rotateY(90deg) translateZ(calc(var(--s)/2));filter:brightness(.85)}
-.cube b:nth-child(3){transform:rotateY(180deg) translateZ(calc(var(--s)/2));filter:brightness(.7)}
-.cube b:nth-child(4){transform:rotateY(-90deg) translateZ(calc(var(--s)/2));filter:brightness(.85)}
-.cube b:nth-child(5){transform:rotateX(90deg) translateZ(calc(var(--s)/2));filter:brightness(1.15)}
-.cube b:nth-child(6){transform:rotateX(-90deg) translateZ(calc(var(--s)/2));filter:brightness(.6)}
-@keyframes spin{from{transform:rotateX(-24deg) rotateY(0)}to{transform:rotateX(-24deg) rotateY(360deg)}}
-h2.sec::after{content:"";display:block;width:56px;height:4px;border-radius:4px;margin-top:12px;background:linear-gradient(90deg,var(--a),var(--b))}
-.fc{position:relative;overflow:hidden;transition:transform .2s,border-color .2s}
-.fc::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--a),var(--b))}
-.fc:hover{transform:translateY(-4px);border-color:var(--b)}
-.steps li{transition:border-color .2s}.steps li:hover{border-color:var(--a)}
-.v{transition:border-color .2s}.v:hover,.v[open]{border-color:var(--b)}
-.band{padding:24px 0 72px}
-.bandin{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;padding:34px;border-radius:24px;border:1.5px solid var(--line);
-  background:linear-gradient(120deg,color-mix(in srgb,var(--a) 22%,var(--card)),color-mix(in srgb,var(--b) 18%,var(--card)))}
-.bandin h2{font:700 24px var(--display);margin:0 0 6px;letter-spacing:-.02em}
-.bandin p{margin:0;color:var(--muted)}
-.bandin .btn{width:auto;padding:15px 32px}
-@media (max-width:760px){.bandin{padding:26px}.bandin .btn{width:100%}}
-@media (prefers-reduced-motion:reduce){.cube{animation:none;transform:rotateX(-24deg) rotateY(-30deg)}.fc,.steps li,.v{transition:none}}
-
-.ticker{background:var(--a);color:#fff;overflow:hidden;white-space:nowrap;border-bottom:2px solid #000}
-.track{display:flex;width:max-content;animation:slide 40s linear infinite}
-.track span{font:900 13px/34px var(--display);letter-spacing:.35em;padding:0 18px}
-.track span::after{content:"/";margin-left:36px;color:#000}
-@keyframes slide{to{transform:translateX(-50%)}}
-.dl{box-shadow:0 0 70px color-mix(in srgb,var(--a) 28%,transparent)}
-h1{text-shadow:none;filter:drop-shadow(0 0 28px color-mix(in srgb,var(--a) 45%,transparent))}
-@media (prefers-reduced-motion:reduce){.track{animation:none}}
-
-.mc{width:100%;height:100%;overflow:visible;transform:rotate(-8deg);filter:drop-shadow(0 0 16px color-mix(in srgb,var(--a) 55%,transparent));animation:bob 3.2s ease-in-out infinite}
-@keyframes bob{50%{transform:rotate(-8deg) translateY(-8px)}}
-@media (prefers-reduced-motion:reduce){.mc{animation:none}}
-
-.soc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-.soc{position:relative;display:flex;flex-direction:column;gap:14px;padding:26px;border-radius:20px;text-decoration:none;background:var(--card);border:1.5px solid var(--line);overflow:hidden;transition:transform .2s,border-color .2s,box-shadow .2s}
-.soc::after{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--a) 35%,transparent),transparent 70%);pointer-events:none}
-.soc:hover{transform:translateY(-5px);border-color:var(--a);box-shadow:0 14px 40px color-mix(in srgb,var(--a) 25%,transparent)}
-.soc .ico{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--a),var(--b));color:#fff}
-.soc .ico svg{width:30px;height:30px}
-.soc h3{margin:0;font:700 19px var(--display);letter-spacing:-.01em}
-.soc p{margin:0;color:var(--muted);flex:1}
-.soc .go{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:#fff}
-.soc .go span{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#fff;color:#000;transition:transform .2s}
-.soc:hover .go span{transform:translateX(5px)}
-@media (prefers-reduced-motion:reduce){.soc,.soc .go span{transition:none}}
-@media (max-width:760px){.hero{grid-template-columns:1fr;gap:36px;padding-top:32px}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="ticker" aria-hidden="true"><div class="track" id="track"></div></div>
 <header>
   <div class="wrap">
-    <a class="brand" href="#" aria-label="N3XR PROJECT">
+    <a class="brand" href="index.html" aria-label="N3XR PROJECT">
       <span class="logo" aria-hidden="true">N</span>
       <span>N3XR <em>PROJECT</em></span>
     </a>
     <nav aria-label="Main navigation">
-      <a href="#fitur">Features</a>
-      <a href="#pasang">How to install</a>
-      <a href="#versi">Versions</a>
+      <a href="#mods">Mods</a>
       <a href="#community">Community</a>
-      <a class="cta" href="#unduh">Download</a>
+      <a class="cta" href="#mods">Select mod</a>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
-  <div class="hero">
+  <div class="hero one">
     <div>
       <div class="titlerow">
         <h1>N3XR</h1>
         <div class="stage" aria-hidden="true"><svg class="mc" id="mc" viewBox="0 0 16 16" shape-rendering="crispEdges"></svg></div>
       </div>
-      <p class="lead">A Fabric client mod with cosmetics, capes, and its own main menu. Pick your game version, then download.</p>
-      <ul class="tags" aria-label="Quick info"><li>Fabric</li><li>Client-side</li><li>Free</li></ul>
-    </div>
-
-    <div class="dl" id="unduh" role="group" aria-labelledby="dl-title">
-      <h2 id="dl-title">Download N3XR Client</h2>
-      <p class="sm">Choose your Minecraft version.</p>
-      <label for="sel-mc">Version</label>
-      <div class="selwrap"><select id="sel-mc"></select></div>
-      <div class="info" aria-live="polite">
-        <div><small>Mod version</small><b id="i-ver">-</b></div>
-        <div><small>Type</small><b id="i-type">-</b></div>
-        <div><small>Downloads</small><b id="i-dl">-</b></div>
-      </div>
-      <a class="btn" id="dl-btn" href="#">Download</a>
-      <p class="note" id="note"></p>
+      <p class="lead">Minecraft mods and tools by N3XR PROJECT. Pick a mod below to see its features and download it.</p>
+      <ul class="tags" aria-label="Quick info"><li>Minecraft</li><li>Fabric</li><li>Free</li></ul>
+      <a class="btn" href="#mods" style="display:inline-block;width:auto;margin-top:24px;padding:14px 32px">Select mod</a>
     </div>
   </div>
 
-  <section id="fitur">
-    <h2 class="sec">Features</h2>
-    <p class="sub">What you get with N3XR Client.</p>
-    <div class="feat" id="features"></div>
+  <section id="mods">
+    <h2 class="sec">Select mod</h2>
+    <p class="sub">Choose a mod to open its page.</p>
+    <div class="soc-grid">
+      <a class="soc" href="n3xr-client.html">
+        <div class="ico" aria-hidden="true">N</div>
+        <h3>N3XR Client</h3>
+        <p>A Fabric client mod with custom capes, a new main menu, and an N3XR nametag. For Minecraft 1.21.</p>
+        <span class="go">Open mod <span aria-hidden="true">&rarr;</span></span>
+      </a>
+      <div class="soc soon">
+        <div class="ico" aria-hidden="true">+</div>
+        <h3>More mods</h3>
+        <p>New mods from N3XR PROJECT will show up here.</p>
+        <span class="go">Coming soon</span>
+      </div>
+    </div>
   </section>
 
-  <section id="pasang">
-    <h2 class="sec">How to install</h2>
-    <p class="sub">Three steps, in order.</p>
-    <ol class="steps">
-      <li><div><b>Install Fabric Loader</b><span>For Minecraft 1.21, through your launcher.</span></div></li>
-      <li><div><b>Put the jar in your mods folder</b><span>Move the downloaded file into the <code>mods</code> folder.</span></div></li>
-      <li><div><b>Launch the game</b><span>Select the Fabric 1.21 profile and play.</span></div></li>
-    </ol>
-  </section>
-
-  <section id="versi">
-    <h2 class="sec">All versions</h2>
-    <p class="sub">Click a version to see what changed.</p>
-    <div id="list"></div>
-  </section>
   <section id="community">
     <h2 class="sec">Join the community</h2>
     <p class="sub">Get updates, ask for help, and hang out with other N3XR players.</p>
@@ -231,93 +76,12 @@ h1{text-shadow:none;filter:drop-shadow(0 0 28px color-mix(in srgb,var(--a) 45%,t
     </div>
   </section>
 
-  <section class="band" aria-label="Download">
-    <div class="bandin">
-      <div><h2>Ready to play?</h2><p>Get N3XR Client for Minecraft 1.21.<br><strong id="band-dl"></strong></p></div>
-      <a class="btn" id="band-btn" href="#">Download</a>
-    </div>
-  </section>
 </main>
 
 <footer><div class="wrap">N3XR PROJECT. Not an official Mojang or Microsoft product.</div></footer>
 
 <script>
-/* ============ EDIT THIS SECTION ============ */
-
-const FEATURES = [
-  {i:"🧣", t:"Custom cape", d:"Draw your own cape design and wear it in-game."},
-  {i:"🖥️", t:"New main menu", d:"Player preview on the right, a cosmetics button, and an account panel in the corner."},
-  {i:"🏷️", t:"N3XR nametag", d:"The N3XR Client icon next to your username in third person."}
-];
-
-/* Add new versions at the top. type: "release" | "beta" | "alpha" */
-const VERSIONS = [
-  { version:"1.2", type:"release", mc:"1.21", date:"",
-    url:"https://sfile.co/SjleaJq7cVg",
-    changelog:["N3XR Client 1.2 for Minecraft 1.21."] }
-];
-/* ========================================= */
-
-const $ = id => document.getElementById(id);
-const typeLabel = {release:"Release", beta:"Beta", alpha:"Alpha"};
-
-const mcList = [...new Set(VERSIONS.map(v => v.mc))];
-$("sel-mc").innerHTML = mcList.map(m => `<option value="${m}">Minecraft ${m}</option>`).join("");
-
-function pick(){
-  const v = VERSIONS.find(x => x.mc === $("sel-mc").value);
-  $("i-ver").textContent = v.version;
-  $("i-type").textContent = typeLabel[v.type];
-  $("dl-btn").href = v.url; $("dl-btn").target = "_blank"; $("dl-btn").rel = "noopener";
-  $("dl-btn").textContent = "Download " + v.version;
-  $("note").textContent = "Requires Fabric Loader.";
-  $("band-btn").href = v.url; $("band-btn").target = "_blank"; $("band-btn").rel = "noopener"; $("band-btn").textContent = "Download " + v.version;
-}
-$("sel-mc").onchange = pick; pick();
-
-$("features").innerHTML = FEATURES.map(f =>
-  `<div class="fc"><div class="ic" aria-hidden="true">${f.i}</div><h3>${f.t}</h3><p>${f.d}</p></div>`).join("");
-
-$("list").innerHTML = VERSIONS.map(v => `
-  <details class="v">
-    <summary>
-      <span class="name">N3XR Client ${v.version}</span>
-      <span class="badge ${v.type}">${typeLabel[v.type]}</span>
-      <span class="meta">Minecraft ${v.mc}${v.date ? " · " + v.date : ""}</span>
-    </summary>
-    <div class="body">
-      <ul>${v.changelog.map(c => `<li>${c}</li>`).join("")}</ul>
-      <a class="btn" href="${v.url}" target="_blank" rel="noopener">Download ${v.version}</a>
-    </div>
-  </details>`).join("");
-
-/* ===== Download counter =====
-   base = number shown on sfile for this file (update it by hand now and then).
-   The live part counts clicks on the Download buttons of this site. */
-const COUNTER = { base: 4, api: "https://abacus.jasoncameron.dev", ns: "rapz132-n3xr", key: "downloads" };
-let live = 0, counted = false;
-function showDl(){
-  const n = (COUNTER.base + live).toLocaleString("en-US");
-  $("i-dl").textContent = n;
-  $("band-dl").textContent = n + " downloads";
-}
-showDl();
-fetch(`${COUNTER.api}/get/${COUNTER.ns}/${COUNTER.key}`)
-  .then(r => r.ok ? r.json() : {value:0})
-  .then(d => { live = d.value || 0; showDl(); })
-  .catch(showDl);
-function countClick(){
-  if(counted) return; counted = true;
-  fetch(`${COUNTER.api}/hit/${COUNTER.ns}/${COUNTER.key}`)
-    .then(r => r.json()).then(d => { live = d.value; showDl(); })
-    .catch(() => { live++; showDl(); });
-}
-$("dl-btn").addEventListener("click", countClick);
-$("band-btn").addEventListener("click", countClick);
-document.querySelectorAll(".v .btn").forEach(b => b.addEventListener("click", countClick));
-
 document.getElementById("track").innerHTML = Array(60).fill("<span>N3XR</span>").join("");
-
 /* pixel-art pickaxe (gambar sendiri, bukan aset Minecraft) */
 (function(){
   const N=16, px={}, col={W:"#ffffff",G:"#bdbdbd",R:"#e50914",D:"#8c0009"};
