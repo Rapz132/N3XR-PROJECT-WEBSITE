@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>N3 Dev – Rapji | N3XR PROJECT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="ticker" aria-hidden="true"><div class="track" id="track"></div></div>
+<header>
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="N3XR PROJECT">
+      <span class="logo" aria-hidden="true">N</span>
+      <span>N3XR <em>PROJECT</em></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="index.html">&larr; Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a class="cta" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="dev-hero">
+    <div class="avatar" id="avatar" aria-hidden="true"></div>
+    <div>
+      <h1 id="d-name"></h1>
+      <p class="lead" id="d-tag"></p>
+      <ul class="tags" id="d-tags" aria-label="Quick info"></ul>
+    </div>
+  </div>
+
+  <section id="about">
+    <h2 class="sec">About</h2>
+    <p class="about" id="d-about"></p>
+  </section>
+
+  <section id="skills">
+    <h2 class="sec">Skills</h2>
+    <ul class="chips" id="d-skills"></ul>
+  </section>
+
+  <section id="projects">
+    <h2 class="sec">Projects</h2>
+    <p class="sub">Things built under N3XR PROJECT.</p>
+    <div class="soc-grid" id="d-projects"></div>
+  </section>
+
+  <section id="contact">
+    <h2 class="sec">Contact</h2>
+    <p class="sub">Reach out through the N3XR PROJECT community.</p>
+    <div class="soc-grid">
+      <a class="soc" href="https://whatsapp.com/channel/0029Vb8USLE23n3eD6PtXp3N" target="_blank" rel="noopener noreferrer">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8.5c0 3.5 2.5 6 6 6l1-1.6-2-1-1 .8c-.8-.4-1.6-1.2-2-2l.8-1-1-2z" fill="currentColor"/></svg></div>
+        <h3>WhatsApp Channel</h3>
+        <p>Release news and announcements, straight to your phone.</p>
+        <span class="go">Follow channel <span aria-hidden="true">→</span></span>
+      </a>
+      <a class="soc" href="https://discord.gg/S5zvBxM9e" target="_blank" rel="noopener noreferrer">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 7h10a4 4 0 0 1 4 4.5l-.8 4.8a2.2 2.2 0 0 1-3.8.9L15 15H9l-1.4 2.2a2.2 2.2 0 0 1-3.8-.9L3 11.5A4 4 0 0 1 7 7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="9" cy="11.5" r="1.4" fill="currentColor"/><circle cx="15" cy="11.5" r="1.4" fill="currentColor"/></svg></div>
+        <h3>Discord Server</h3>
+        <p>Chat with the community, get help, and share your feedback.</p>
+        <span class="go">Join server <span aria-hidden="true">→</span></span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer><div class="wrap">N3XR PROJECT. Not an official Mojang or Microsoft product.</div></footer>
+
+<script>
+/* ============ EDIT THIS SECTION ============ */
+const DEV = {
+  name: "Rapji",
+  tagline: "Minecraft mod developer behind N3XR PROJECT.",
+  tags: ["N3 Dev", "Minecraft", "Fabric"],
+  photo: "",   // optional: put an image file name here, e.g. "rapji.jpg"
+  about: "Hi, I'm Rapji, the developer behind N3XR PROJECT. More about me, what I build, and how I work is coming soon.",
+  skills: ["Minecraft modding", "Fabric"],
+  projects: [
+    { icon: "N", title: "N3XR Client", text: "A Fabric client mod with custom capes, a new main menu, and an N3XR nametag.", link: "n3xr-client.html", cta: "Open mod" },
+    { icon: "+", title: "More projects", text: "New projects will be added here.", soon: true }
+  ]
+};
+/* ============================================= */
+const $ = id => document.getElementById(id);
+$("d-name").textContent = DEV.name;
+$("d-tag").textContent = DEV.tagline;
+$("d-tags").innerHTML = DEV.tags.map(t => `<li>${t}</li>`).join("");
+$("d-about").textContent = DEV.about;
+$("d-skills").innerHTML = DEV.skills.map(t => `<li>${t}</li>`).join("");
+$("avatar").innerHTML = DEV.photo ? `<img src="${DEV.photo}" alt="">` : DEV.name.charAt(0).toUpperCase();
+$("d-projects").innerHTML = DEV.projects.map(p => p.soon
+  ? `<div class="soc soon"><div class="ico" aria-hidden="true">${p.icon}</div><h3>${p.title}</h3><p>${p.text}</p><span class="go">Coming soon</span></div>`
+  : `<a class="soc" href="${p.link}"><div class="ico" aria-hidden="true">${p.icon}</div><h3>${p.title}</h3><p>${p.text}</p><span class="go">${p.cta} <span aria-hidden="true">&rarr;</span></span></a>`).join("");
+document.getElementById("track").innerHTML = Array(60).fill("<span>N3XR</span>").join("");
+</script>
+</body>
+</html>
