@@ -50,7 +50,7 @@ select:hover{border-color:var(--b)}
 .btn[aria-disabled="true"]{opacity:.4;pointer-events:none}
 .note{color:var(--muted);font-size:13px;text-align:center;margin:12px 0 0}
 
-section{padding:56px 0}
+section{padding:44px 0}
 h2.sec{font:700 26px var(--display);margin:0 0 8px;letter-spacing:-.02em}
 .sub{color:var(--muted);margin:0 0 28px;max-width:60ch}
 .feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
@@ -157,3 +157,16 @@ h1{text-shadow:none;filter:drop-shadow(0 0 28px color-mix(in srgb,var(--a) 45%,t
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
 .chips li{padding:9px 20px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);font-weight:600;transition:border-color .2s}
 .chips li:hover{border-color:var(--a)}
+
+/* ---- perapihan v3 ---- */
+.hero.one{padding:40px 0 20px}
+.hero .tags{margin-bottom:0}
+.dev-hero{padding:40px 0 16px}
+.dev-hero h1{line-height:1.18;padding-bottom:.1em}
+nav a.back{display:inline-flex;align-items:center}
+@media (max-width:640px){
+  nav a.back{display:inline-flex;padding:8px 12px;font-size:18px}
+  nav a.back .lbl{display:none}
+  section{padding:34px 0}
+  .hero.one{padding-top:28px}
+}
