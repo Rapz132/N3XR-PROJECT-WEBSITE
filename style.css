@@ -142,3 +142,18 @@ h1{text-shadow:none;filter:drop-shadow(0 0 28px color-mix(in srgb,var(--a) 45%,t
 .soc.soon:hover{transform:none;box-shadow:none;border-color:var(--line)}
 .soc.soon .go{color:var(--muted)}
 
+
+.herobtns{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.herobtns .btn{display:inline-block;width:auto;padding:14px 32px;margin:0}
+.btn.ghost{background:transparent;color:#fff;border:2px solid var(--a)}
+.btn.ghost:hover{background:var(--a)}
+.dev-hero{display:flex;align-items:center;gap:32px;flex-wrap:wrap;padding:56px 0 40px}
+.dev-hero h1{font-size:clamp(46px,10vw,92px);margin:0 0 10px}
+.dev-hero .lead{margin:0 0 16px}
+.avatar{width:clamp(112px,24vw,168px);aspect-ratio:1;border-radius:30px;display:grid;place-items:center;font:900 clamp(52px,11vw,80px) var(--display);color:#fff;
+  background:linear-gradient(135deg,var(--a),var(--b));box-shadow:0 0 56px color-mix(in srgb,var(--a) 42%,transparent);transform:rotate(-4deg);overflow:hidden;flex:none}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.about{max-width:62ch;font-size:18px;color:var(--muted);margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
+.chips li{padding:9px 20px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);font-weight:600;transition:border-color .2s}
+.chips li:hover{border-color:var(--a)}
