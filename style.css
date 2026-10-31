@@ -159,6 +159,7 @@ h1{text-shadow:none;filter:drop-shadow(0 0 28px color-mix(in srgb,var(--a) 45%,t
 .chips li:hover{border-color:var(--a)}
 
 /* ---- perapihan v3 ---- */
+section{padding:44px 0}
 .hero.one{padding:40px 0 20px}
 .hero .tags{margin-bottom:0}
 .dev-hero{padding:40px 0 16px}
