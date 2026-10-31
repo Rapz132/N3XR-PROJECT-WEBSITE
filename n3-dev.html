@@ -7,7 +7,38 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
+<style>
+/* salinan aturan terbaru (cadangan kalau style.css di repo masih lama) */
+.herobtns{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.herobtns .btn{display:inline-block;width:auto;padding:14px 32px;margin:0}
+.btn.ghost{background:transparent;color:#fff;border:2px solid var(--a)}
+.btn.ghost:hover{background:var(--a)}
+.dev-hero{display:flex;align-items:center;gap:32px;flex-wrap:wrap;padding:56px 0 40px}
+.dev-hero h1{font-size:clamp(46px,10vw,92px);margin:0 0 10px}
+.dev-hero .lead{margin:0 0 16px}
+.avatar{width:clamp(112px,24vw,168px);aspect-ratio:1;border-radius:30px;display:grid;place-items:center;font:900 clamp(52px,11vw,80px) var(--display);color:#fff;
+  background:linear-gradient(135deg,var(--a),var(--b));box-shadow:0 0 56px color-mix(in srgb,var(--a) 42%,transparent);transform:rotate(-4deg);overflow:hidden;flex:none}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.about{max-width:62ch;font-size:18px;color:var(--muted);margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
+.chips li{padding:9px 20px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);font-weight:600;transition:border-color .2s}
+.chips li:hover{border-color:var(--a)}
+
+/* ---- perapihan v3 ---- */
+section{padding:44px 0}
+.hero.one{padding:40px 0 20px}
+.hero .tags{margin-bottom:0}
+.dev-hero{padding:40px 0 16px}
+.dev-hero h1{line-height:1.18;padding-bottom:.1em}
+nav a.back{display:inline-flex;align-items:center}
+@media (max-width:640px){
+  nav a.back{display:inline-flex;padding:8px 12px;font-size:18px}
+  nav a.back .lbl{display:none}
+  section{padding:34px 0}
+  .hero.one{padding-top:28px}
+}
+</style>
 </head>
 <body>
 <div class="ticker" aria-hidden="true"><div class="track" id="track"></div></div>
@@ -84,7 +115,7 @@ const DEV = {
   tags: ["N3 Dev", "Minecraft", "Fabric"],
   photo: "",   // optional: put an image file name here, e.g. "rapji.jpg"
   about: "Hi, I'm Rapji, the developer behind N3XR PROJECT. More about me, what I build, and how I work is coming soon.",
-  skills: ["Minecraft modding", "Fabric"],
+  skills: ["Minecraft Modding", "Minecraft Plugins", "Create TexturePacks"],
   projects: [
     { icon: "N", title: "N3XR Client", text: "A Fabric client mod with custom capes, a new main menu, and an N3XR nametag.", link: "n3xr-client.html", cta: "Open mod" },
     { icon: "+", title: "More projects", text: "New projects will be added here.", soon: true }
